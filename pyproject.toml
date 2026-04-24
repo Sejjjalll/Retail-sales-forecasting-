@@ -1,0 +1,128 @@
+[build-system]
+requires = ["setuptools>=45", "pybind11>=2.10", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "statsforecast"
+dynamic = ["version"]
+description = "Time series forecasting suite using statistical models"
+readme = "README.md"
+license = { text = "Apache Software License 2.0" }
+authors = [{ name = "Nixtla", email = "business@nixtla.io" }]
+keywords = ["time-series", "forecasting", "arima", "ets"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Natural Language :: English",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+]
+requires-python = ">=3.10"
+dependencies = [
+    "cloudpickle",
+    "coreforecast>=0.0.17",
+    "numpy>=1.21.6",
+    "pandas<3.0.0",
+    "scipy>=1.7.3",
+    "statsmodels>=0.14.5",
+    "tqdm",
+    "fugue>=0.9.4",
+    "utilsforecast>=0.1.4",
+    "threadpoolctl>=3",
+]
+
+[project.urls]
+Homepage = "https://github.com/Nixtla/statsforecast/"
+Repository = "https://github.com/Nixtla/statsforecast/"
+Documentation = "https://nixtlaverse.nixtla.io/statsforecast/"
+
+[dependency-groups]
+dev = [
+    "datasetsforecast",
+    "fire",
+    "pandas[plot]<3.0.0",
+    "polars[numpy]",
+    "pre-commit",
+    "prophet",
+    "pyarrow<21.0.0 ; python_version < '3.14'",
+    "pyarrow>=22.0.0 ; python_version >= '3.14'",
+    "pybind11",
+    "pytest",
+    "scikit-learn",
+    "setuptools<79",
+    "supersmoother",
+    "xlrd",
+    "yfinance",
+    "pytest-cov",
+    "pip-licenses",
+    "mkdocstrings-parser@git+https://github.com/Nixtla/mkdocstrings-parser.git",
+]
+dask = ["dask", "fugue[dask]>=0.9.4"]
+ray = [
+    "fugue[ray]>=0.9.4 ; sys_platform != 'win32' and python_version < '3.14'",
+    "protobuf>=5.29.6 ; python_version < '3.12'",
+]
+spark = ["fugue[spark]>=0.9.4", "pyspark<4.1.0; sys_platform == 'win32'"]
+all = [
+    "dask",
+    "fugue[dask]>=0.9.4",
+    "fugue[spark]>=0.9.4",
+    "fugue[ray]>=0.9.4 ; sys_platform != 'win32' and python_version < '3.14'",
+    "pyspark<4.1.0; sys_platform == 'win32'",
+    "plotly",
+    "plotly-resampler ; python_version < '3.14'",
+    "polars[numpy]",
+    "datasetsforecast",
+    "fire",
+    "pandas[plot]<3.0.0",
+    "pre-commit",
+    "prophet",
+    "pyarrow<21.0.0 ; python_version < '3.14'",
+    "pyarrow>=22.0.0 ; python_version >= '3.14'",
+    "pybind11",
+    "pytest",
+    "pytest-cov",
+    "scikit-learn",
+    "setuptools<79",
+    "supersmoother",
+    "yfinance",
+    "protobuf>=5.29.6",
+    "numpy",
+]
+
+[tool.setuptools]
+packages = ["statsforecast"]
+
+[tool.setuptools.dynamic]
+version = { attr = "statsforecast.__version__" }
+
+[tool.setuptools.package-dir]
+"" = "python"
+
+[tool.setuptools.package-data]
+"*" = ["**/*"]
+
+[tool.cibuildwheel]
+archs = "all"
+build-verbosity = 1
+
+[tool.ruff]
+target-version = "py310"
+line-length = 88
+lint.select = ["F"]
+
+[tool.mypy]
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = [
+    "--cov=python/statsforecast",
+    "--cov-report=term-missing",
+    "--cov-report=html",
+    "--cov-fail-under=80",
+]
