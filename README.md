@@ -188,9 +188,6 @@ Suited for series with very few non-zero observations
 |[IMAPA](https://nixtlaverse.nixtla.io/statsforecast/src/core/models.html#imapa)|✅||✅|✅||
 |[TSB](https://nixtlaverse.nixtla.io/statsforecast/src/core/models.html#tsb)|✅||✅|✅||
 
-## 🔨 How to contribute
-
-See [CONTRIBUTING.md](https://github.com/Nixtla/statsforecast/blob/main/CONTRIBUTING.md).
 
 ## Citing
 
