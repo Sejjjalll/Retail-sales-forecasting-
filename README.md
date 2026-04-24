@@ -1,5 +1,4 @@
-# Nixtla
-
+# Retail sales forecasting (hierarchical + reconciliation)
 <div align="center">
 <img src="https://raw.githubusercontent.com/Nixtla/neuralforecast/main/nbs/imgs_indx/logo_mid.png"/>
 <h1 align="center">Statistical ⚡️ Forecast</h1>
